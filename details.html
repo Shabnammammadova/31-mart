@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"
+    crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="row"></div>
+    <div class="container";bg-secondary>
+    
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    
+<h4 style="left: 10cm;"></h4>
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+      <script>
+
+        let body=document.querySelector("body")
+        let id=document.location.search.slice(4)
+        //console.log(id);
+
+        axios.get(`https://api.tvmaze.com/shows/`+ id)
+        .then(function (element) {
+            body.innerHTML+=`<h4 style >${element.data.name}<\h4>
+                <div class="col-4">
+                <img src="${element.data.image.medium}" alt="">
+                </div>
+
+            ${element.data.summary}
+           
+             <p><b>Genres:</b>${element.data.genres}</p> 
+             <p><b>Premiered:</b>${element.data.premiered} </p>    
+             <p><b>Ended:</b>${element.data.ended}  </p> 
+             <p><b>Language:</b>${element.data.language} </p> 
+             <p><b>Runtime:</b>${element.data.runtime}  </p>
+          
+             `
+         })
+
+</script>
+
+</div>
+
+</body>
+
+</html>
